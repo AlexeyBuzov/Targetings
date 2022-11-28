@@ -6,116 +6,41 @@ import (
 	"github.com/AlekSi/pointer"
 )
 
-var Scenario1 = models.Node{
-	Type:  enums.LOGICS,
-	Logic: pointer.ToString(enums.AND),
-	Children: &[]models.Node{
+var Scenario1 = models.Scenario{
+	Requests: []models.ForecastRequest{
 		{
-			Type: enums.VALUE,
-			Value: &models.Targeting{
-				Type:  enums.SEGMENT,
-				Value: 1234, // Кой-то сегмент
+			Targetings: []models.Targeting{
+				{
+					Type:      enums.LOCATION,
+					Value:     []int64{1, 2},             // Мос. обл., Лен. обл.
+					Exception: pointer.To([]int64{1, 2}), // Москва, СПБ
+				},
+				{
+					Type:      enums.MICROCAT,
+					Value:     []int64{1},             // Авто
+					Exception: pointer.To([]int64{2}), // С пробегом
+				},
+				{
+					Type:  enums.INTEREST,
+					Value: []int64{1}, // Покупка недвижимости
+				},
 			},
 		},
 		{
-			Type:  enums.LOGICS,
-			Logic: pointer.ToString(enums.OR),
-			Children: &[]models.Node{
+			Targetings: []models.Targeting{
 				{
-					Type: enums.VALUE,
-					Value: &models.Targeting{
-						Type:  enums.LOCATION,
-						Value: 1, // Москва
-						Children: &[]models.Node{
-							{
-								Type:  enums.LOGICS,
-								Logic: pointer.ToString(enums.AND),
-								Children: &[]models.Node{
-									{
-										Type:  enums.LOGICS,
-										Logic: pointer.ToString(enums.OR),
-										Children: &[]models.Node{
-											{
-												Type: enums.VALUE,
-												Value: &models.Targeting{
-													Type:  enums.MICROCAT,
-													Value: 1, // Транспорт
-												},
-											},
-											{
-												Type: enums.VALUE,
-												Value: &models.Targeting{
-													Type:  enums.MICROCAT,
-													Value: 2, // Недвижимость
-												},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
+					Type:      enums.LOCATION,
+					Value:     []int64{1, 2},             // Мос. обл., Лен. обл.
+					Exception: pointer.To([]int64{1, 2}), // Москва, СПБ
 				},
 				{
-					Type: enums.VALUE,
-					Value: &models.Targeting{
-						Type:  enums.LOCATION,
-						Value: 2, // СПб
-						Children: &[]models.Node{
-							{
-								Type:  enums.LOGICS,
-								Logic: pointer.ToString(enums.AND),
-								Children: &[]models.Node{
-									{
-										Type:  enums.LOGICS,
-										Logic: pointer.ToString(enums.OR),
-										Children: &[]models.Node{
-											{
-												Type: enums.VALUE,
-												Value: &models.Targeting{
-													Type:  enums.MICROCAT,
-													Value: 1, // Транспорт
-												},
-											},
-											{
-												Type:  enums.LOGICS,
-												Logic: pointer.ToString(enums.NOT),
-												Children: &[]models.Node{
-													{
-														Type: enums.VALUE,
-														Value: &models.Targeting{
-															Type:  enums.MICROCAT,
-															Value: 3, // Мотоциклы
-														},
-													},
-												},
-											},
-											{
-												Type:  enums.LOGICS,
-												Logic: pointer.ToString(enums.AND),
-												Children: &[]models.Node{
-													{
-														Type: enums.VALUE,
-														Value: &models.Targeting{
-															Type:  enums.MICROCAT,
-															Value: 2, // Недвижимость
-														},
-													},
-													{
-														Type: enums.VALUE,
-														Value: &models.Targeting{
-															Type:  enums.SEGMENT,
-															Value: 4321, // Кой-то сегмент
-														},
-													},
-												},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
+					Type:      enums.MICROCAT,
+					Value:     []int64{1},             // Авто
+					Exception: pointer.To([]int64{2}), // С пробегом
+				},
+				{
+					Type:  enums.INTEREST,
+					Value: []int64{1}, // Покупка недвижимости
 				},
 			},
 		},
