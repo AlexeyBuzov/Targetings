@@ -1,7 +1,6 @@
 package examples
 
 import (
-	"TargetingsLogic/internal/enums"
 	"TargetingsLogic/internal/models"
 	"github.com/AlekSi/pointer"
 )
@@ -11,36 +10,44 @@ var Scenario1 = models.Scenario{
 		{
 			Targetings: []models.Targeting{
 				{
-					Type:      enums.LOCATION,
-					Value:     []int64{1, 2},             // Мос. обл., Лен. обл.
-					Exception: pointer.To([]int64{1, 2}), // Москва, СПБ
+					Location: pointer.To(models.LocationTargeting{
+						Include: []int64{1, 2},             // Мос. обл., Лен. обл.
+						Exclude: pointer.To([]int64{1, 2}), // Москва, СПБ
+					}),
 				},
 				{
-					Type:      enums.MICROCAT,
-					Value:     []int64{1},             // Авто
-					Exception: pointer.To([]int64{2}), // С пробегом
+					Microcategory: pointer.To(models.MicrocategoryTargeting{
+						Include: []int64{1},             // Авто
+						Exclude: pointer.To([]int64{2}), // С пробегом
+					}),
 				},
 				{
-					Type:  enums.INTEREST,
-					Value: []int64{1}, // Покупка недвижимости
+					Interest: pointer.To(models.InterestTargeting{
+						Include:      []int64{1}, // Покупка недвижимости
+						IncludePower: []string{"h"},
+					}),
 				},
 			},
 		},
 		{
 			Targetings: []models.Targeting{
 				{
-					Type:      enums.LOCATION,
-					Value:     []int64{1, 2},             // Мос. обл., Лен. обл.
-					Exception: pointer.To([]int64{1, 2}), // Москва, СПБ
+					Location: pointer.To(models.LocationTargeting{
+						Include: []int64{1, 2},             // Мос. обл., Лен. обл.
+						Exclude: pointer.To([]int64{1, 2}), // Москва, СПБ
+					}),
 				},
 				{
-					Type:      enums.MICROCAT,
-					Value:     []int64{1},             // Авто
-					Exception: pointer.To([]int64{2}), // С пробегом
+					Microcategory: pointer.To(models.MicrocategoryTargeting{
+						Include: []int64{1},             // Авто
+						Exclude: pointer.To([]int64{2}), // С пробегом
+					}),
 				},
 				{
-					Type:  enums.INTEREST,
-					Value: []int64{1}, // Покупка недвижимости
+					Interest: pointer.To(models.InterestTargeting{
+						Include:      []int64{1}, // Покупка недвижимости
+						IncludePower: []string{"h"},
+					}),
 				},
 			},
 		},
