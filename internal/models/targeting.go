@@ -17,8 +17,11 @@ type MicrocategoryTargeting struct {
 }
 
 type InterestTargeting struct {
-	Include      []int64
-	IncludePower []string
-	Exclude      *[]int64
-	ExcludePower *[]string
+	Include []Interest
+	Exclude *[]Interest
+}
+
+type Interest struct {
+	Id    int64
+	Power string
 }

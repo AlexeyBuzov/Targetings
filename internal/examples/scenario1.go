@@ -23,8 +23,12 @@ var Scenario1 = models.Scenario{
 				},
 				{
 					Interest: pointer.To(models.InterestTargeting{
-						Include:      []int64{1}, // Покупка недвижимости
-						IncludePower: []string{"h"},
+						Include: []models.Interest{
+							{
+								Id:    1, // Покупка недвижимости
+								Power: "h",
+							},
+						},
 					}),
 				},
 			},
@@ -45,8 +49,12 @@ var Scenario1 = models.Scenario{
 				},
 				{
 					Interest: pointer.To(models.InterestTargeting{
-						Include:      []int64{1}, // Покупка недвижимости
-						IncludePower: []string{"h"},
+						Include: []models.Interest{
+							{
+								Id:    1, // Покупка недвижимости
+								Power: "h",
+							},
+						},
 					}),
 				},
 			},
